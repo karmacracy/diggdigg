@@ -148,6 +148,11 @@ define('DD_GLOBAL_FACEBOOK_OPTION_DEFAULT_THUMB','dd_global_facebook_option_defa
 define('DD_GLOBAL_FLATTR_OPTION','dd_global_flattr_option');
 define('DD_GLOBAL_FLATTR_OPTION_UID','dd_global_flattr_option_uid');
 
+define('DD_GLOBAL_KARMACRACY_OPTION','dd_global_karmacracy_option');
+define('DD_GLOBAL_KARMACRACY_OPTION_TOOLTIP','dd_global_karmacracy_option_tooltip');
+define('DD_GLOBAL_KARMACRACY_OPTION_CADS','dd_global_karmacracy_option_cadsid');
+
+
 global $ddGlobalConfig; 
 $ddGlobalConfig = array(
 	DD_GLOBAL_TWITTER_OPTION => array(
@@ -174,7 +179,11 @@ $ddGlobalConfig = array(
 	),
 	DD_GLOBAL_FLATTR_OPTION => array(
 		DD_GLOBAL_FLATTR_OPTION_UID => DD_EMPTY_VALUE
-	)
+	),
+    DD_GLOBAL_KARMACRACY_OPTION => array(
+        DD_GLOBAL_KARMACRACY_OPTION_TOOLTIP =>DD_CHECK_BOX_ON,
+        DD_GLOBAL_KARMACRACY_OPTION_CADS =>DD_EMPTY_VALUE
+    ),
 );
 /*******
  * Digg Digg Global Display (End)
@@ -233,7 +242,8 @@ $ddNormalButtons = array(
 		DD_BUTTON_GOOGLE1 => new DD_Google1(),
 		DD_BUTTON_BUFFER => new DD_Buffer(),
 		DD_BUTTON_PINTEREST => new DD_Pinterest(),
-		DD_BUTTON_FLATTR => new DD_Flattr()
+		DD_BUTTON_FLATTR => new DD_Flattr(),
+        DD_BUTTON_KARMACRACY=>new DD_Karmacracy()
 	),
 	DD_NORMAL_BUTTON_FINAL => array()
 );
@@ -327,7 +337,8 @@ $ddFloatButtons = array(
 		DD_BUTTON_GOOGLE1 => new DD_Google1(),
 		DD_BUTTON_BUFFER => new DD_Buffer(),
 		DD_BUTTON_PINTEREST => new DD_Pinterest(),
-		DD_BUTTON_FLATTR => new DD_Flattr()		
+		DD_BUTTON_FLATTR => new DD_Flattr(),
+        DD_BUTTON_KARMACRACY => new DD_Karmacracy()
 	),
 	DD_FLOAT_BUTTON_FINAL => array()
 );

@@ -256,10 +256,38 @@ function dd_print_global_form($ddGlobalConfig){
 							</div>
 						</div>
 						<!-- End Topsy Config -->
+
+                        <div class="stuffbox">
+                            <h3><label for="link_name">7. Karmacracy configuration</label></h3>
+                            <div class="inside">
+                                <table class="form-table">
+                                    <tr valign="top">
+                                        <th scope="row">7.1 Show community tooltip</th>
+                                        <td>
+                                            <INPUT TYPE=CHECKBOX NAME="<?php echo DD_GLOBAL_KARMACRACY_OPTION_TOOLTIP?>"
+                                                <?php echo ($ddGlobalConfig[DD_GLOBAL_KARMACRACY_OPTION][DD_GLOBAL_KARMACRACY_OPTION_TOOLTIP]==DD_DISPLAY_ON) ? DD_CHECK_BOX_ON : DD_CHECK_BOX_OFF ?>>
+                                        </td>
+                                    </tr>
+
+                                    <tr valign="top">
+                                        <th scope="row">7.2 cAds certificate media ID</th>
+                                        <td>
+                                            <input type="text" value="<?php echo $ddGlobalConfig[DD_GLOBAL_KARMACRACY_OPTION][DD_GLOBAL_KARMACRACY_OPTION_CADS]; ?>" name="<?php echo DD_GLOBAL_KARMACRACY_OPTION_CADS;?>" />
+                                            <p>Enter your cAds media id if you are a <a href="http://cads.me" target="_blank">cAds certificate site</a>. </p>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <div class="submit">
+                                    <input class="button-primary" name="<?php echo DD_FORM_SAVE; ?>" value="Save changes" type="submit" style="width:100px;" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Topsy Config -->
 						
 						
 						<div class="stuffbox">
-							<h3><label for="link_name">7. Reset Global Configuration Settings</label></h3>
+							<h3><label for="link_name">8. Reset Global Configuration Settings</label></h3>
 							<div class="inside">
 								<br />
 								<p>Reset all "Global Configuration" settings to their default values.</p>
@@ -272,7 +300,7 @@ function dd_print_global_form($ddGlobalConfig){
 						
 						<?php // XXX: This seems pretty drastic... I doubt many people do this one! ?>
 						<div class="stuffbox">
-							<h3><label for="link_name">8. Reset Everything</label></h3>
+							<h3><label for="link_name">9. Reset Everything</label></h3>
 							<div class="inside">
 								<br />
 								<p>Reset all settings (everything) to their default values.</p>

@@ -2119,4 +2119,75 @@ class DD_Serpd extends BaseDD{
         parent::BaseDD(self::NAME, self::URL_WEBSITE, self::URL_API, self::BASEURL);
     }    
 }
+/******************************************************************************************
+ *
+ * http://www.karmacracy.com
+ *
+ */
+class DD_Karmacracy extends BaseDD{
+
+    const NAME = "Karmacracy";
+    const URL_WEBSITE = "http://www.karmacracy.com";
+    const URL_API = "http://karmacracy.com/sections/widget/button/button.php";
+    const BASEURL = "<div class=\"kcy_karmacracy_widget_h_#ID#\"></div><script defer=\"defer\" src=\"http://rodney.karmacracy.com/widget-2.0/?id=#ID#&button=1&display=#TYPE#&show-tooltip=#SHOW_TOOLTIP##CADSID#\"></script>";
+
+    const OPTION_APPEND_TYPE = "dd_karmacracy_appendType";
+    const OPTION_BUTTON_DESIGN = "dd_karmacracy_buttonDesign";
+    const OPTION_BUTTON_WEIGHT = "dd_karmacracy_button_weight";
+    const OPTION_AJAX_LEFT_FLOAT = "dd_karmacracy_ajax_left_float";
+    const OPTION_LAZY_LOAD = "dd_karmacracy_lazy_load";
+
+    const DEFAULT_BUTTON_WEIGHT = "80";
+
+    var $islazyLoadAvailable = false;
+    var $isEncodeRequired = true;
+
+    var $buttonLayout = array(
+        "Normal" => "over",
+        "Compact" => "right"
+    );
+
+    const BUTTON_TYPE_TAG="#TYPE#";
+    const BUTTON_ID="#ID#";
+    const BUTTON_SHOW_TOOLTIP="#SHOW_TOOLTIP#";
+    const BUTTON_CADS="#CADSID#";
+
+    public function DD_Karmacracy() {
+
+        $this->option_append_type = self::OPTION_APPEND_TYPE;
+        $this->option_button_design = self::OPTION_BUTTON_DESIGN;
+        $this->option_button_weight = self::OPTION_BUTTON_WEIGHT;
+        $this->option_ajax_left_float = self::OPTION_AJAX_LEFT_FLOAT;
+        $this->option_lazy_load = self::OPTION_LAZY_LOAD;
+
+        $this->button_weight_value = self::DEFAULT_BUTTON_WEIGHT;
+
+        parent::BaseDD(self::NAME, self::URL_WEBSITE, self::URL_API, self::BASEURL);
+    }
+    public function constructURL($url, $title,$button, $postId, $lazy, $globalcfg = ''){
+
+
+        $rnd=rand(1,999999);
+        $result = str_replace(self::BUTTON_TYPE_TAG,$this->getButtonDesign($button),$this->baseURL);
+        $result = str_replace(self::BUTTON_ID,$rnd,$result);
+
+        if($globalcfg!=''){
+            $cads = $globalcfg[DD_GLOBAL_KARMACRACY_OPTION][DD_GLOBAL_KARMACRACY_OPTION_CADS];
+            $showtooltip=$globalcfg[DD_GLOBAL_KARMACRACY_OPTION][DD_GLOBAL_KARMACRACY_OPTION_TOOLTIP];
+
+        }
+        if ($cads) {
+            $result = str_replace(self::BUTTON_CADS,"&medio-id=".$cads,$result);
+        } else {
+            $result = str_replace(self::BUTTON_CADS,"",$result);
+        }
+        if ($showtooltip) {
+            $result=str_replace(self::BUTTON_SHOW_TOOLTIP,"1",$result);
+        } else {
+            $result=str_replace(self::BUTTON_SHOW_TOOLTIP,"0",$result);
+        }
+
+        $this->finalURL = $result;
+    }
+}
 ?>
